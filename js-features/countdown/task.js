@@ -1,11 +1,15 @@
-const updateCountdown = function(){
-	const timer = document.getElementById("timer");
-	if(timer.textContent > 0){
-		timer.textContent--;
-        if(timer.textContent == 0) {
-            alert("Вы победили в конкурсе!");
-        }
-	}	
-}
+let timerEl = document.getElementById('timer')
+let statusEl = document.getElementById('status')
+window.onload = function (number) {
+	number = timerEl.textContent
 
-setInterval(updateCountdown, 1000);
+	const countDown = () => {
+		if (timerEl.textContent <= 0) {
+			alert('Вы победили в конкурсе!')
+			clearInterval(timerId)
+		} else {
+			timerEl.textContent--
+		}
+	}
+	const timerId = setInterval(countDown, 1000)
+}
